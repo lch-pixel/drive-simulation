@@ -4,10 +4,19 @@ public class Driving {
     private int totalKm;
     private int runningTime;
     private int tireChangeCount;
-    private String tire;
+    private Tire tire;
 
     public Driving() {
-        this.tire = "브릿지 스톤";
+        this.tire = new BridgestoneTire();
+    }
+
+    public void startDriving() {
+        if(this.totalKm == 0) {
+            System.out.println("주행거리를 입력해주세요");
+        }
+        else {
+            
+        }
     }
 
     public void getDrivingInfo() {
@@ -25,6 +34,10 @@ public class Driving {
 
     public void getCarName() {
         System.out.println(this.carName);
+    }
+
+    public void setTotalKm(int totalKm) {
+        this.totalKm = totalKm;
     }
 
 }

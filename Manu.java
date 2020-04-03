@@ -8,6 +8,8 @@ class Manu {
 
     //메뉴 고르기
     void mainManu() {
+        Tire tire = new BridgestoneTire();
+        System.out.println(tire.getName());
 
         int manuNum = 0;
 
@@ -39,13 +41,17 @@ class Manu {
                         System.out.println("자동차를 선택해주세요.");
                         break;
                     }
-                    System.out.println(this.choisCarNumber);
+                    addTotalKm();
                     break;
                 case 4 : 
-                    //selectNum = 4;
+                    if(this.choisCarNumber < 0) {
+                        System.out.println("자동차를 선택해주세요.");
+                        break;
+                    }
+                    this.driving[this.choisCarNumber].startDriving();
                     break;
                 default :
-                    System.out.println("올바른 메뉴를 선택해 주세요.");
+                    this.driving[this.choisCarNumber].getDrivingInfo();
                     manuNum = 0;
             }
         }
@@ -77,8 +83,12 @@ class Manu {
 
     //주행거리 입력
     public void addTotalKm() {
-        System.out.println("주행거리를 입력해주세요.");
-        int totalKm = sc.nextInt();
+        int totalKm;
+        do {
+            System.out.println("주행거리를 입력해주세요.");
+            totalKm = sc.nextInt();
+       } while(totalKm % 20 != 0);
+       this.driving[this.choisCarNumber].setTotalKm(totalKm);
     } 
 
     public static void clearScreen() {
