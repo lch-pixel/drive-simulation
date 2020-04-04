@@ -50,9 +50,13 @@ class Manu {
                     }
                     this.driving[this.choisCarNumber].startDriving();
                     break;
-                default :
+                case 5 : 
+                    if(this.choisCarNumber < 0) {
+                        System.out.println("자동차를 선택해주세요.");
+                        break;
+                    }
                     this.driving[this.choisCarNumber].getDrivingInfo();
-                    manuNum = 0;
+                    break;                    
             }
         }
         while(true);
@@ -74,10 +78,10 @@ class Manu {
         do {
             System.out.println("자동차를 선택해주세요.");
             for(int i=0; i<this.buyCarCount; i++) {
-                System.out.print(i + " : ");
+                System.out.print(i+1 + " : ");
                 this.driving[i].getCarName();
             }
-            this.choisCarNumber= sc.nextInt();
+            this.choisCarNumber= sc.nextInt()-1;
        } while(this.choisCarNumber < 0 || this.choisCarNumber >= this.buyCarCount);
     } 
 
